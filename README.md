@@ -16,6 +16,22 @@ If your README is long, add a table of contents to make it easy for users to fin
 - [License](#license)
 
 ## Installation
+To install the app and get it running, 
+go into the root and run npm install followed by npm start
+
+---
+
+To run Keep your words with slow internet connection, 
+cd client folder from the root
+and install (npm i) to directly install the client packages. 
+
+cd to the server folder 
+install the packages here. 
+
+cd to the client folder and run the build (npm run build)
+
+cd to the server folder and start the server using npm start
+
 
 When you open Keep your words, you will find an install button located in the navigation bar. Click install to load locally, or simply start typing!
 
