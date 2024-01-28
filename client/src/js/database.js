@@ -35,7 +35,7 @@ export const putDb = async (content) => {
   //create a variable that will hold the reference to the object store
   const store = tx.objectStore('jate');
   //add method on object store and pass in content
-  const request = store.put({ jate: content });
+  const request = store.put({ id: 1, value: content });
   //the result confirms the transaction
   const result = await request;
   console.log('Data updated in the jate database', result);
@@ -45,9 +45,15 @@ export const putDb = async (content) => {
 export const getDb = async () => {
 
   const jateDb = await openDB('jate', 1);
-  const result = await jateDb.getAll('jate');
+
+  const tx = jateDb.transaction('jate', 'readonly');
+  const store = tx.objectStore('jate');
+  
+  const request = store.get(1);
+  const result = await request;
   console.log('All content from database', result);
   console.dir(result);
+  return result?.value
 
 }
 

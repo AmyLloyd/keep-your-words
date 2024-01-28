@@ -20,13 +20,15 @@ module.exports = () => {
     plugins: [
       new HtmlWebpackPlugin({
         template: './index.html',
-        title: 'Webpack Plugin'
+        title: 'JATE'
       }),
       new InjectManifest({
         swSrc: './src-sw.js',
-        swDest: 'service-worker.js',
+        swDest: './src-sw.js',
       }), 
       new WebpackPwaManifest({
+        fingerprints: false,
+        inject: true,
         name: 'JATE',
         short_name: 'jate',
         description: 'Text Editor database',
@@ -51,27 +53,17 @@ module.exports = () => {
           test: /\.css$/i,
           use: ['style-loader', 'css-loader'],
         },
-        //This code handles images in the Asset module
-
-        {
-          test: /\.(png|svg|jpg|jpeg|gif)$/i,
-          type: 'asset/resource',
-        },
         {
           test: /\.m?js$/,
-          exclude: /(node_modules|bower_components)/,
+          exclude: /node_modules/,
+          // We use babel-loader in order to use ES6.
           use: {
             loader: 'babel-loader',
             options: {
-              presets: [
-                ['@babel/preset-env']
-              ],
-              plugins: [
-                '@babel/plugin-transform-runtime',
-                '@babel/plugin-proposal-object-rest-spread'
-              ]
-            }
-          }
+              presets: ['@babel/preset-env'],
+              plugins: ['@babel/plugin-proposal-object-rest-spread', '@babel/transform-runtime'],
+            },
+          },
         },
       ],
     },
