@@ -27,9 +27,9 @@ module.exports = () => {
         swDest: 'service-worker.js',
       }), 
       new WebpackPwaManifest({
-        name: 'Keep your words',
-        short_name: 'words',
-        description: 'Keep your important words!',
+        name: 'JATE',
+        short_name: 'jate',
+        description: 'Text Editor database',
         background_color: '#7eb4e2',
         theme_color: '#7eb4e2',
         start_url: './',
@@ -38,7 +38,7 @@ module.exports = () => {
           {
             src: path.resolve('src/images/logo.png'),
             sizes: [96, 128, 192, 256, 384, 512],
-            destination: path.join('src', 'icons'),
+            destination: path.join('assets', 'icons'),
           },
       ],
       }),
